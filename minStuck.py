@@ -28,3 +28,23 @@
 # minStack.pop();
 # minStack.top();     --> 返回0.
 # minStack.getMin();  --> 返回 - 2.
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minStuck = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        if not self.minStuck and val <= self.minStuck[-1]:
+            self.minStuck.append(val)
+
+    def pop(self) -> None:
+        x=self.stack.pop()
+        if x == self.minStuck[-1]:
+            self.minStuck.pop()
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minStuck[-1]
