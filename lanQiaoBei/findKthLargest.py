@@ -1,5 +1,6 @@
 from typing import List
 
+
 # 215.数组中的第k个最大元素
 # 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 #
@@ -16,4 +17,35 @@ from typing import List
 # 输出: 4
 
 class Solution:
+    # 调整
+    def heapify(self, arr: List[int], n: int, i: int) -> int:
+        largest = i
+        left = 2 * i + 1
+        right = 2 * i + 2
+        if left < n and arr[left] > arr[largest]:
+            largest = left
+        if right < n and arr[right] > arr[largest]:
+            largest = right
+        if largest != i:
+            arr[i], arr[largest] = arr[largest], arr[i]
+            self.heapify(arr, n, largest)
+
+    # 从最后一个非叶子节点开始，依次进行heapify操作，直到根节点   大根堆
+    def create(self, arr: List[int]):
+        lenth = len(arr)
+        for i in range(int(lenth / 2 - 1), -1, -1):
+            self.heapify(arr, lenth, i)
+        return arr
+
     def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums = self.create(nums)
+        lenth = len(nums)
+        end = lenth - k - 1
+        for i in range(lenth - 1, end, -1):
+            nums[0], nums[i] = nums[i], nums[0]
+            self.heapify(nums, i, 0)
+        return nums[lenth - k]
+
+s = Solution()
+# print(s.findKthLargest([16, 9, 10, 14, 7],2))
+print(s.findKthLargest([2,1],2))
