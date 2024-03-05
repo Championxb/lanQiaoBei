@@ -23,9 +23,9 @@ class Solution:
         # list(freqDict.keys())[list(freqDict.values()).index(2)]  由value查key  把字典列表化
         topK = [n for n in freqDict.values()]
         topK = self.create(topK)  # 堆排序
+
         lenth = len(topK)
         end = len(topK) - 1 - k
-
         lastK = []
         # 倒数K个
         for i in range(lenth - 1, end, -1):
