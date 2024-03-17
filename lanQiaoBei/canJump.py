@@ -26,7 +26,7 @@ class Solution:
         for i in range(len(nums)):
             if maxLen < i:
                 return False
-            if nums[i] >= len(nums):
+            if i + nums[i] >= len(nums):
                 return True
             maxLen = max(maxLen, i + nums[i])
 
