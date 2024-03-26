@@ -23,7 +23,7 @@ from typing import List
 
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        if sum(nums) - target == 0: return 1
+        if sum(nums) <abs(target): return 0
 
         # 假设加法的总和为x，那么减法对应的总和就是sum - x。
         # 所以我们要求的是:  x - (sum - x) = target
