@@ -23,7 +23,6 @@
 # 在每次的计算过程可能会改变d[i],所以最终的公式为：
 # dp[i] = max(dp[i],max(dp[i], (i - j) * j, dp[i - j] * j))
 
-
 class Solution:
     def integerBreak(self, n: int) -> int:
         dp = [0]*(n+1)
